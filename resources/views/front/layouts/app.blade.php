@@ -25,13 +25,13 @@
 				<ul class="navbar-nav ms-0 ms-sm-0 me-auto mb-2 mb-lg-0 ms-lg-4">
 					<li class="nav-item">
 						<a class="nav-link" aria-current="page" href="{{ route('home') }}">Home</a>
-					</li>	
+					</li>
 					<li class="nav-item">
-						<a class="nav-link" aria-current="page" href="jobs.html">Find Jobs</a>
-					</li>										
+						<a class="nav-link" aria-current="page" href="{{ route('jobs') }}">Find Jobs</a>
+					</li>
 				</ul>
 				@if(!Auth::check())
-				<a class="btn btn-outline-primary me-2" href="{{ route('account.login') }}" type="submit">Login</a>		
+				<a class="btn btn-outline-primary me-2" href="{{ route('account.login') }}" type="submit">Login</a>
 				@else
 				<a class="btn btn-outline-primary me-2" href="{{ route('account.profile') }}" type="submit">Account</a>
 				@endif
@@ -72,7 +72,7 @@
 <div class="container">
     <p class="text-center text-white pt-3 fw-bold fs-6">© 2023 xyz company, all right reserved</p>
 </div>
-</footer> 
+</footer>
 <script src="{{ asset('assets/js/jquery-3.6.0.min.js') }}"></script>
 <script src="{{ asset('assets/js/bootstrap.bundle.5.1.3.min.js') }}"></script>
 <script src="{{ asset('assets/js/instantpages.5.1.0.min.js') }}"></script>

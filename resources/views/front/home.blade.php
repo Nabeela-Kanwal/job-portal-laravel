@@ -15,7 +15,7 @@
   </div>
 </section>
 
-<section class="section-1 py-5 "> 
+<section class="section-1 py-5 ">
   <div class="container">
       <div class="card border-0 shadow p-5">
           <div class="row">
@@ -34,14 +34,14 @@
                       <option value="">Fashion designing</option>
                   </select>
               </div>
-              
+
               <div class=" col-md-3 mb-xs-3 mb-sm-3 mb-lg-0">
                   <div class="d-grid gap-2">
                       <a href="jobs.html" class="btn btn-primary btn-block">Search</a>
                   </div>
-                  
+
               </div>
-          </div>            
+          </div>
       </div>
   </div>
 </section>
@@ -60,8 +60,8 @@
         </div>
         @endforeach
         @endif
-          
-          
+
+
       </div>
   </div>
 </section>
@@ -69,9 +69,9 @@
 <section class="section-3 py-5">
     <div class="container">
         <h2>Featured Jobs</h2>
-        
+
         <div class="row pt-5">
-            <div class="job_listing_area">                    
+            <div class="job_listing_area">
                 <div class="job_lists">
                     <div class="row">
                       @if($featuredJobs->isNotEmpty())
@@ -97,9 +97,9 @@
                                         </p>
                                         @endif
                                     </div>
-  
+
                                     <div class="d-grid mt-3">
-                                        <a href="job-detail.html" class="btn btn-primary btn-lg">Details</a>
+                                        <a href="{{ route('jobDetail', $featuredJob->id) }}" class="btn btn-primary btn-lg">Details</a>
                                     </div>
                                 </div>
                             </div>
@@ -110,17 +110,17 @@
                 </div>
             </div>
         </div>
-          
+
     </div>
   </section>
-  
+
 
   <section class="section-3 py-5">
     <div class="container">
         <h2>Latest Jobs</h2>
-        
+
         <div class="row pt-5">
-            <div class="job_listing_area">                    
+            <div class="job_listing_area">
                 <div class="job_lists">
                     <div class="row">
                       @if($latestjobs->isNotEmpty())
@@ -146,9 +146,9 @@
                                         </p>
                                         @endif
                                     </div>
-  
+
                                     <div class="d-grid mt-3">
-                                        <a href="job-detail.html" class="btn btn-primary btn-lg">Details</a>
+                                        <a href="{{ route('jobDetail', $latestjob->id) }}" class="btn btn-primary btn-lg">Details</a>
                                     </div>
                                 </div>
                             </div>
@@ -159,7 +159,7 @@
                 </div>
             </div>
         </div>
-          
+
     </div>
   </section>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -179,7 +179,7 @@
               <button type="submit" class="btn btn-primary mx-3">Update</button>
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           </div>
-          
+
       </form>
     </div>
   </div>

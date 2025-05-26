@@ -14,7 +14,7 @@ class HomeController extends Controller
         $featuredJobs = Job::where('status', 1)
         ->orderBy('created_at', 'DESC')
         ->with('jobType')
-        ->where('isFeatured', 1)->take(6)->get();
+        ->where('is_featured', 1)->take(6)->get();
 
         $latestjobs = Job::where('status', 1)
         ->orderBy('created_at', 'DESC')
