@@ -60,7 +60,7 @@
                                                 <tr class="active">
                                                     <td>
                                                         <div class="job-name fw-500">{{ $job->title }}</div>
-                                                        <div class="info1">{{ $job->jobType->name}} . 
+                                                        <div class="info1">{{ $job->jobType->name}} .
                                                             {{ $job->location }}</div>
                                                     </td>
                                                     <td>{{ \Carbon\Carbon::parse($job->created_at)->format('d M, Y') }}</td>
@@ -104,7 +104,7 @@
                                 {{ $jobs->links() }}
                             </div>
                         </div>
-                    </div> 
+                    </div>
                 </div>
             </div>
         </div>
