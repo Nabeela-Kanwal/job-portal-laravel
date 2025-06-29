@@ -3,17 +3,19 @@
 namespace App\Http\Controllers;
 
 
-use App\Models\User;
+use App\Http\Requests\StoreJobRequest;
 use App\Models\category;
-use App\Models\JobType;
 use App\Models\Job;
 use App\Models\JobApplication;
+use App\Models\JobType;
+use App\Models\SavedJob;
+use App\Models\User;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Unique;
-use Illuminate\Support\Facades\Auth;
 use Symfony\Contracts\Service\Attribute\Required;
 
 class AccountController extends Controller
@@ -166,11 +168,12 @@ class AccountController extends Controller
         ]);
     }
 
+
     public function saveJob(Request $request)
     {
         $rules = [
             'title' => 'required|string|max:255',
-            'category_id' => 'required|exists:categories,id', // Ensure this is validated
+            'category_id' => 'required|exists:categories,id',
             'job_type_id' => 'required|exists:job_types,id',
             'vacancy' => 'required',
             'salary' => 'required',
@@ -216,6 +219,7 @@ class AccountController extends Controller
         }
     }
 
+
     public function myJobs()
     {
         $jobs = Job::where('user_id', Auth::user()->id)->with('jobType')->paginate(10);
@@ -247,7 +251,7 @@ class AccountController extends Controller
     {
         $rules = [
             'title' => 'required|string|max:255',
-            'category_id' => 'required|exists:categories,id', // Ensure this is validated
+            'category_id' => 'required|exists:categories,id',
             'job_type_id' => 'required|exists:job_types,id',
             'vacancy' => 'required',
             'salary' => 'required',
@@ -319,6 +323,7 @@ class AccountController extends Controller
             Auth::user()->id
         )
             ->with(['job', 'job.jobType', 'job.applications'])
+            ->orderBy('created_at', 'DESC')
             ->paginate(10);
         return view('front.account.job.myJobApplications', [
             'jobApplications' => $jobApplications
@@ -340,6 +345,37 @@ class AccountController extends Controller
         }
 
         JobApplication::find($request->id)->delete();
+        session()->flash('success', 'Job Application is removed sucessfully');
+        return response()->json([
+            'status' => true,
+        ]);
+    }
+
+    public function savedJob()
+    {
+        $savedJobs = SavedJob::where('user_id', Auth::id())
+            ->with(['job', 'job.jobType', 'job.applications'])
+            ->orderBy('created_at', 'DESC')
+            ->paginate(10);
+
+        return view('front.account.job.savedJob', compact('savedJobs'));
+    }
+
+    public function removeSavedJob(Request $request)
+    {
+        $savedJobs = SavedJob::where([
+            'id' => $request->id,
+            'user_id' => Auth::user()->id
+        ])->first();
+
+        if ($savedJobs == null) {
+            session()->flash('error', 'Job Application not found');
+            return response()->json([
+                'status' => false,
+            ]);
+        }
+
+        SavedJob::find($request->id)->delete();
         session()->flash('success', 'Job Application is removed sucessfully');
         return response()->json([
             'status' => true,

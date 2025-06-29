@@ -15,6 +15,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/jobs', [JobsController::class, 'index'])->name('jobs');
 Route::get('/jobs/detail/{id}', [JobsController::class, 'detail'])->name('jobDetail');
 Route::post('/apply-job', [JobsController::class, 'applyJob'])->name('applyJob');
+Route::post('/save/job', [JobsController::class, 'saveJobs'])->name('saveJob');
 
 
 
@@ -43,5 +44,9 @@ Route::group(['prefix' => 'account'], function () {
         Route::post('/account/my/Jobs/delete/', [AccountController::class, 'deleteJob'])->name('account.deleteJob');
         Route::get('/account/my/Jobs/application/', [AccountController::class, 'myJobApplications'])->name('account.myJobApplications');
         Route::post('/remove/Jobs/application', [AccountController::class, 'removeJob'])->name('account.removeJob');
+        Route::get('/saved/Jobs/application', [AccountController::class, 'savedJob'])->name('account.savedJob');
+        Route::post('/remove/saved/job',[AccountController::class, 'removeSavedJob'])->name('account.removeSavedJob');
+
+
     });
 });
