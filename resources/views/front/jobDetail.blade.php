@@ -38,8 +38,9 @@
                                     </div>
                                 </div>
                                 <div class="jobs_right">
-                                    <div class="apply_now {{ ($count == 1) ? 'saved-job' : '' }}">
-                                        <a class="heart_mark" href="javascript:void(0)" onclick="saveJob({{ $job->id }})"> <i class="fa fa-heart-o"
+                                    <div class="apply_now {{ $count == 1 ? 'saved-job' : '' }}">
+                                        <a class="heart_mark" href="javascript:void(0)"
+                                            onclick="saveJob({{ $job->id }})"> <i class="fa fa-heart-o"
                                                 aria-hidden="true"></i></a>
                                     </div>
                                 </div>
@@ -92,6 +93,55 @@
                             </div>
                         </div>
                     </div>
+
+                    {{-- applied user data --}}
+                    @if (Auth::user())
+                        @if (Auth::user()->id == $job->user_id)
+                            <div class="card shadow border-0 mt-4">
+                                <div class="job_details_header p-4">
+                                    <h4>Applicants</h4>
+                                </div>
+                                <hr>
+                                {{--
+                        <div class="single_jobs white-bg d-flex justify-content-between">
+                            <div class="jobs_left d-flex align-items-center">
+                                <!-- Additional left content if needed -->
+                            </div>
+                            <div class="job-right">
+                                <!-- Additional right content if needed -->
+                            </div>
+                        </div> --}}
+
+                                <div class="descript_wrap white-bg p-4">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>Applied Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @if ($applications->isNotEmpty())
+                                                @foreach ($applications as $application)
+                                                    <tr>
+                                                        <td>{{ $application->user->name }}</td>
+                                                        <td>{{ $application->user->email }}</td>
+                                                        <td>{{ \Carbon\Carbon::parse($application->applied_date)->format('d M, Y') }}
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            @else
+                                                <tr>
+                                                    <td colspan="3" class="text-center">No applications found.</td>
+                                                </tr>
+                                            @endif
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        @endif
+                    @endif
                 </div>
                 <div class="col-md-4">
                     <div class="card shadow border-0">
