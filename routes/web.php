@@ -4,7 +4,9 @@
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JobsController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -45,8 +47,10 @@ Route::group(['prefix' => 'account'], function () {
         Route::get('/account/my/Jobs/application/', [AccountController::class, 'myJobApplications'])->name('account.myJobApplications');
         Route::post('/remove/Jobs/application', [AccountController::class, 'removeJob'])->name('account.removeJob');
         Route::get('/saved/Jobs/application', [AccountController::class, 'savedJob'])->name('account.savedJob');
-        Route::post('/remove/saved/job',[AccountController::class, 'removeSavedJob'])->name('account.removeSavedJob');
-
+        Route::post('/remove/saved/job', [AccountController::class, 'removeSavedJob'])->name('account.removeSavedJob');
+        Route::post('/update/password', [AccountController::class, 'updatePassword'])->name('account.updatePassword');
 
     });
 });
+
+

@@ -55,7 +55,7 @@
                             @if (!empty($job->responsibility))
                                 <div class="single_wrap">
                                     <h4>Responsibility</h4>
-                                    {{ $job->responsibility }}
+                                    {{ strip_tags($job->responsibility )}}
                                 </div>
                             @endif
 

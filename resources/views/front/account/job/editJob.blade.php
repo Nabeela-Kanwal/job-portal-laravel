@@ -14,7 +14,7 @@
             </div>
         </div>
 
-      
+
         <div class="row">
            @include('front.layouts.sidebar')
             <div class="col-lg-9">
@@ -24,7 +24,7 @@
                     <p class="mb-0 pb-0">{{ Session::get('success') }}</p>
                 </div>
                 @endif
-        
+
                 @if(Session::has('error'))
                 <div class="alert alert-danger">
                     <p class="mb-0 pb-0">{{ Session::get('error') }}</p>
@@ -51,11 +51,11 @@
                                         @endforeach
                                     @endif
                                 </select>
-                                
+
                                 <p></p>
                             </div>
                         </div>
-                        
+
                         <div class="row">
                             <div class="col-md-6 mb-4">
                                 <label for="" class="mb-2">Job Type<span class="req">*</span></label>
@@ -92,30 +92,30 @@
 
                         <div class="mb-4">
                             <label for="" class="mb-2">Description<span class="req">*</span></label>
-                            <textarea class="form-control" name="description" id="description" cols="5" rows="5" placeholder="Description">{{ $job->description }}</textarea>
+                            <textarea class="teaxtarea" name="description" id="description" cols="5" rows="5" placeholder="Description">{{ $job->description }}</textarea>
                             <p></p>
                         </div>
                         <div class="mb-4">
                             <label for="" class="mb-2">Benefits</label>
-                            <textarea class="form-control" value="{{ $job->benefits }}" name="benefits" id="benefits" cols="5" rows="5" placeholder="Benefits"></textarea>
+                            <textarea class="teaxtarea" value="{{ $job->benefits }}" name="benefits" id="benefits" cols="5" rows="5" placeholder="Benefits"></textarea>
                         </div>
                         <div class="mb-4">
                             <label for="" class="mb-2">Responsibility</label>
-                            <textarea class="form-control" name="responsibility" id="responsibility" cols="5" rows="5" placeholder="Responsibility">{{ $job->responsibility }}</textarea>
+                            <textarea class="teaxtarea" name="responsibility" id="responsibility" cols="5" rows="5" placeholder="Responsibility">{{ $job->responsibility }}</textarea>
                         </div>
                         <div class="mb-4">
                             <label for="" class="mb-2">Qualifications</label>
-                            <textarea class="form-control" value="{{ $job->benefits }}" name="qualifications" id="qualifications" cols="5" rows="5" placeholder="qualifications"></textarea>
+                            <textarea class="teaxtarea" value="{{ $job->benefits }}" name="qualifications" id="qualifications" cols="5" rows="5" placeholder="qualifications"></textarea>
                         </div>
-                        
-                        
+
+
 
                         <div class="mb-4">
                             <label for="" class="mb-2">Keywords</span></label>
                             <input type="text" value="{{ $job->keyword }}" placeholder="keyword" id="keyword" name="keyword" class="form-control">
                         </div>
 
-                        
+
                         <div class="mb-4">
                             <label for="" class="mb-2">Experience<span class="req">*</span></label>
                            <select name="experience" id="experience" class="form-control">
@@ -132,7 +132,7 @@
                             <option value="10" {{ ($job->experience == 10) ? 'selected' : '' }}>10 Year</option>
                             <option value="10_plus" {{ ($job->experience == '10_plus') ? 'selected' : '' }}>10+ years</option>
                         </select>
-                        <p></p> 
+                        <p></p>
                         </div>
 
                         <h3 class="fs-4 mb-1 mt-5 border-top pt-5">Company Details</h3>
@@ -154,13 +154,13 @@
                             <label for="" class="mb-2">Website</label>
                             <input type="text"  value="{{ $job->company_website }}" placeholder="Website" id="company_website" name="company_website" class="form-control">
                         </div>
-                    </div> 
+                    </div>
                     <div class="card-footer  p-4">
                         <button type="submit" class="btn btn-primary">Update Job</button>
-                    </div>               
+                    </div>
             </div>
               </form>
-                              
+
             </div>
         </div>
     </div>
@@ -185,7 +185,7 @@ $("#editJobForm").submit(function(e){
     $("button[type='submit']").prop('disable', false);
 
             if(respone.status == true){
-              
+
                          $("#title").removeClass('is-invalid')
                         .siblings('p')
                         .removeClass('invalid-feedback')
@@ -225,7 +225,7 @@ $("#editJobForm").submit(function(e){
                         .siblings('p')
                         .removeClass('invalid-feedback')
                         .html('');
-                        
+
                         $("#experience").removeClass('is-invalid')
                         .siblings('p')
                         .removeClass('invalid-feedback')
@@ -335,7 +335,7 @@ $("#editJobForm").submit(function(e){
                     }
 
 
-                    
+
             }
 
 
