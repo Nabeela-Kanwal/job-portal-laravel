@@ -1,4 +1,4 @@
-
+<div class="col-lg-3">
     <div class="card account-nav border-0 shadow mb-4 mb-lg-0">
         <div class="card-body p-0">
             <ul class="list-group list-group-flush ">
@@ -21,3 +21,4 @@
         </div>
     </div>
 </div>
+

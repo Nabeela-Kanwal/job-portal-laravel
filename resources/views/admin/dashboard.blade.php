@@ -15,23 +15,20 @@
 
 
             <div class="row">
-                <!-- Sidebar -->
-                <div class="col-lg-3">
-                    @include('admin.sidebar')
-                </div>
-
-                <!-- Main Content -->
+                @include('admin.sidebar')
                 <div class="col-lg-9">
+
                     @include('front.message')
 
-                    <div class="card border-0 shadow mb-4">
-                        <div class="card-body">
-                           <h2>WelCome Admin!</h2>
+                    <div class="card border-0 shadow mb-4" style="min-height: 500px;">
+                        <div class="card-body p-4 d-flex justify-content-center align-items-center">
+                            <h3 class="fs-4 mb-1">Welcome Amin!</h3>
                         </div>
                     </div>
+
+
                 </div>
             </div>
-
         </div>
     </section>
 @endsection

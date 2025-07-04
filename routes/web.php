@@ -22,9 +22,10 @@ Route::post('/apply-job', [JobsController::class, 'applyJob'])->name('applyJob')
 Route::post('/save/job', [JobsController::class, 'saveJobs'])->name('saveJob');
 
 
-Route::group(['prefix' => 'admin'], function () {
+Route::middleware('CheckRole')->prefix('admin')->as('admin.')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
+
 
 
 
