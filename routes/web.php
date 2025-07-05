@@ -3,10 +3,13 @@
 
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\JobController;
+use App\Http\Controllers\Admin\JobApplicationController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JobsController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -24,7 +27,26 @@ Route::post('/save/job', [JobsController::class, 'saveJobs'])->name('saveJob');
 
 Route::middleware('CheckRole')->prefix('admin')->as('admin.')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::prefix('user')->as('user.')->group(function () {
+        Route::get('/list', [UserController::class, 'index'])->name('list');
+        Route::get('/edit/{id}', [UserController::class, 'edit'])->name('edit');
+        Route::put('/update/{id}', [UserController::class, 'update'])->name('update');
+        Route::delete('/delete', [UserController::class, 'delete'])->name('delete');
+    });
+    Route::prefix('job')->as('job.')->group(function () {
+        Route::get('/list', [JobController::class, 'index'])->name('list');
+        Route::get('/edit/{id}', [JobController::class, 'edit'])->name('edit');
+        Route::put('/update/{id}', [JobController::class, 'update'])->name('update');
+        Route::delete('/delete', [JobController::class, 'delete'])->name('delete');
+    });
+    Route::prefix('jobApplication')->as('jobApplication.')->group(function () {
+        Route::get('/list', [JobApplicationController::class, 'index'])->name('list');
+        // Route::get('/edit/{id}', [JobApplicationController::class, 'edit'])->name('edit');
+        // Route::put('/update/{id}', [JobApplicationController::class, 'update'])->name('update');
+        // Route::delete('/delete', [JobApplicationController::class, 'delete'])->name('delete');
+    });
 });
+
 
 
 

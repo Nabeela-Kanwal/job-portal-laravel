@@ -6,19 +6,18 @@
                     <a href="account.html">Account Settings</a>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                    <a href="#">Users</a>
+                    <a href="{{ route('admin.user.list') }}">Users</a>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                    <a href="#">Jobs</a>
+                    <a href="{{ route('admin.job.list') }}">Jobs</a>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                    <a href="#">Jobs Applications</a>
+                    <a href="{{ route('admin.jobApplication.list') }}">Jobs Applications</a>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                    <a href="#">Logout</a>
+                    <a href="{{ route('account.logout') }}">Logout</a>
                 </li>
             </ul>
         </div>
     </div>
 </div>
-

@@ -14,10 +14,14 @@ class Job extends Model
     }
 
     public function category(){
-        return $this->belongsTo(category::class); // Corrected this line
+        return $this->belongsTo(category::class); 
     }
 
     public function applications(){
         return $this->hasMany(JobApplication::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }
