@@ -10,8 +10,8 @@
                 <div class="col-6 col-md-2">
                     <div class="align-end">
                         <select name="sort" id="sort" class="form-control">
-                            <option value="1" {{ (Request::get('sort') == '1') ? 'selected' : "" }}>Latest</option>
-                            <option value="0" {{ (Request::get('sort') == '0') ? 'selected' : "" }}>Oldest</option>
+                            <option value="1" {{ Request::get('sort') == '1' ? 'selected' : '' }}>Latest</option>
+                            <option value="0" {{ Request::get('sort') == '0' ? 'selected' : '' }}>Oldest</option>
                         </select>
                     </div>
                 </div>
@@ -51,7 +51,8 @@
                                 @if ($jobTypes->isNotEmpty())
                                     @foreach ($jobTypes as $jobType)
                                         <div class="form-check mb-2">
-                                            <input {{ in_array($jobType->id, $jobTypeArray) ? 'checked' : ""}} class="form-check-input " name="job_type" type="checkbox"
+                                            <input {{ in_array($jobType->id, $jobTypeArray) ? 'checked' : '' }}
+                                                class="form-check-input " name="job_type" type="checkbox"
                                                 value="{{ $jobType->id }}" id="job-type-{{ $jobType->id }}">
                                             <label class="form-check-label "
                                                 for="job-type-{{ $jobType->id }}">{{ $jobType->name }}</label>
@@ -108,7 +109,8 @@
                                             <div class="card border-0 p-3 shadow mb-4">
                                                 <div class="card-body">
                                                     <h3 class="border-0 fs-5 pb-2 mb-0">{{ $job->title }}</h3>
-                                                    <p>{{ Str::words(strip_tags($job->description), $words = 10, '...') }}</p>
+                                                    <p>{{ Str::words(strip_tags($job->description), $words = 10, '...') }}
+                                                    </p>
                                                     <div class="bg-light p-3 border">
                                                         <p class="mb-0">
                                                             <span class="fw-bolder"><i class="fa fa-map-marker"></i></span>
@@ -132,12 +134,17 @@
                                                     </div>
 
                                                     <div class="d-grid mt-3">
-                                                        <a href="{{ route('jobDetail', $job->id) }}" class="btn btn-primary btn-lg">Details</a>
+                                                        <a href="{{ route('jobDetail', $job->id) }}"
+                                                            class="btn btn-primary btn-lg">Details</a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     @endforeach
+
+                                    <div class="col-md-12">
+                                        {{ $jobs->withQueryString()->links() }}
+                                    </div>
                                 @else
                                     <div class="col-md-12">Job Not Found</div>
                                 @endif
@@ -192,11 +199,11 @@
 
             }
 
-            url += '&sort='+sort,
-            window.location.href = url;
+            url += '&sort=' + sort,
+                window.location.href = url;
 
         });
-        $("sort").change(function(){
+        $("sort").change(function() {
             $('#searchForm').submit();
 
         });

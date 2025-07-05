@@ -41,9 +41,9 @@ Route::middleware('CheckRole')->prefix('admin')->as('admin.')->group(function ()
     });
     Route::prefix('jobApplication')->as('jobApplication.')->group(function () {
         Route::get('/list', [JobApplicationController::class, 'index'])->name('list');
-        // Route::get('/edit/{id}', [JobApplicationController::class, 'edit'])->name('edit');
+        Route::get('/edit/{id}', [JobApplicationController::class, 'edit'])->name('edit');
         // Route::put('/update/{id}', [JobApplicationController::class, 'update'])->name('update');
-        // Route::delete('/delete', [JobApplicationController::class, 'delete'])->name('delete');
+        Route::delete('/delete', [JobApplicationController::class, 'delete'])->name('delete');
     });
 });
 
