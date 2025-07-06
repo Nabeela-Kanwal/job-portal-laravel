@@ -60,6 +60,13 @@ Route::group(['prefix' => 'account'], function () {
         Route::post('/proces/registration', [AccountController::class, 'processRegistration'])->name('account.processRegistration');
         Route::post('/account/authenticate', [AccountController::class, 'authenticate'])->name('account.authenticate');
     });
+    Route::get('/account/forgot/password', [AccountController::class, 'forgotPassword'])->name('account.forgot.password');
+    Route::post('/account/process/forgot/password', [AccountController::class, 'processForgotPassword'])->name('account.process.forgot.password');
+    Route::get('/account/reset/password/{token}', [AccountController::class, 'resetPassword'])->name('account.reset.password');
+    Route::post('/account/process/reset/password', [AccountController::class, 'processResetPassword'])->name('account.process.reset.password');
+
+
+
 
     Route::group(['middleware' => 'auth'], function () {
         Route::get('/account/profile', [AccountController::class, 'profile'])->name('account.profile');
